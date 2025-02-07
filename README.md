@@ -4,9 +4,9 @@ Power estimation via passive collection of network metrics based on eBPF approac
 
 ## Usage
 
-    to run the ebpf part:
+to run the ebpf part:
 
-    ```bash
-    sudo python3 data_logger.py <ifdev>
-    ``` 
-    where ifdev is the network interface name
+```bash
+sudo python3 data_logger.py <ifdev>
+```
+where ifdev is the network interface name
