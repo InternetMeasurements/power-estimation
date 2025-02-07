@@ -1,15 +1,23 @@
 #!/usr/bin/python
 
+import sys
 from bcc import BPF
 from time import sleep
 import pyroute2
 import csv
 
+def usage():
+    print("Usage: {0} <ifdev>".format(sys.argv[0]))
+    print("e.g.: {0} eth0\n".format(sys.argv[0]))
+    exit(1)
+if len(sys.argv) !=2:
+    usage()
+
 # Load the eBPF program
 bpf = BPF(src_file="data_logger.c")
 
 # Attach XDP program to a network interface for ingress traffic
-device = "wlan0"
+device = sys.argv[1]
 fn_ingress = bpf.load_func("handle_ingress", BPF.XDP)
 bpf.attach_xdp(device, fn_ingress)
 
