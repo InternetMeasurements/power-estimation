@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from bcc import BPF
 from time import sleep
 import pyroute2
@@ -7,7 +9,7 @@ import csv
 bpf = BPF(src_file="data_logger.c")
 
 # Attach XDP program to a network interface for ingress traffic
-device = "ens33"
+device = "wlan0"
 fn_ingress = bpf.load_func("handle_ingress", BPF.XDP)
 bpf.attach_xdp(device, fn_ingress)
 
@@ -18,7 +20,7 @@ idx = ipdb.interfaces[device].index
 ipr.tc("add", "clsact", idx)
 fn_egress = bpf.load_func("handle_egress", BPF.SCHED_CLS)
 ipr.tc("add-filter", "bpf", idx, ":1", fd=fn_egress.fd, name=fn_egress.name,
-       parent="ffff:fff2", classid=1, direct_action=True)
+       parent="ffff:fff3", classid=1, direct_action=True)
 
 print(f"eBPF program attached to {device}. Press Ctrl+C to stop.")
 
