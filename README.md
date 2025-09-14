@@ -22,4 +22,9 @@ This repository contains all components developed and used for the thesis projec
 - **ebpf_part/**  
   Contains the eBPF monitoring tool:  
   - Kernel-side program written in C  
-  - User-space controller written in Python using the BCC framework  
+  - User-space controller written in Python using the BCC framework
+ 
+## Acknowledgements
+Prof. Alessio Vecchio
+Eng. Valerio Luconi
+
