@@ -25,6 +25,6 @@ This repository contains all components developed and used for the thesis projec
   - User-space controller written in Python using the BCC framework
  
 ## Acknowledgements
-Prof. Alessio Vecchio
-Eng. Valerio Luconi
+- Prof. Alessio Vecchio
+- Eng. Valerio Luconi
 
